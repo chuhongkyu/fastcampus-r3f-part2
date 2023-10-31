@@ -4,3 +4,10 @@ body, html, main, #root {
   height: 100%;
   overflow: hidden;
 }
+
+.h1{
+  font-size: 28px;
+  font-weight: 500;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}

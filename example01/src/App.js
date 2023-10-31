@@ -1,6 +1,6 @@
 function App() {
   return (
-    <div>Hello R3F</div>
+    <div className="h1">Hello R3F</div>
   );
 }
 
