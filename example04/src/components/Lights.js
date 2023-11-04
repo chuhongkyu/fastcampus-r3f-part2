@@ -7,9 +7,8 @@ const Lights = () => {
     // useHelper(drectRef, DirectionalLightHelper, 'cyan')
     return(
         <>
-            <Environment preset="forest" />
             <directionalLight ref={drectRef} position={[0,5,5]} intensity={1.4} castShadow />
-            <ambientLight intensity={0.5} color="#ffffff" />
+            <ambientLight intensity={2} color="white" />
         </>
     )
 }
