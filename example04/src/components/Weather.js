@@ -8,7 +8,7 @@ const Weather = (props) => {
     const glb = useLoader(GLTFLoader, '/models/weather.glb')
 
     const weatherModel = useMemo(() => {
-        const clonedModel = gltf.nodes[weather] || gltf.nodes.cloud
+        const clonedModel = glb.nodes[weather] || glb.nodes.cloud
         return clonedModel.clone()
     }, [weather])
 
