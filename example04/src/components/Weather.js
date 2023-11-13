@@ -18,7 +18,10 @@ const Weather = (props) => {
     })
 
     return(
-        <motion.mesh ref={ref} whileHover={{scale:1.5, transition:{duration:0.5}}} position={position} rotation={rotation}>
+        <motion.mesh ref={ref}
+            whileHover={{scale:1.5, transition:{duration:0.5}}} 
+            position={position} 
+            rotation={rotation}>
             <primitive object={weatherModel} />
         </motion.mesh>
     )
