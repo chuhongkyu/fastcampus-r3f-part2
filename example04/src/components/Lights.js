@@ -1,4 +1,4 @@
-import { Environment, useHelper } from "@react-three/drei";
+import { useHelper } from "@react-three/drei";
 import { useRef } from "react";
 import { DirectionalLightHelper } from "three";
 
