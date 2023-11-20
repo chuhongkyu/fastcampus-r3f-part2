@@ -1,12 +1,14 @@
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { motion } from "framer-motion-3d";
+import { CityName } from "./CityName";
 
 const Weather = (props) => {
-    const { position, rotation, weather } = props;
+    const { position, cityName, rotation, weather } = props;
     const glb = useLoader(GLTFLoader, '/models/weather.glb')
     const ref = useRef(null)
+    const [isHover, setHover] = useState(false)
 
     const weatherModel = useMemo(() => {
         const clonedModel = glb.nodes[weather] || glb.nodes.cloud
@@ -18,12 +20,20 @@ const Weather = (props) => {
     })
 
     return(
-        <motion.mesh ref={ref}
-            whileHover={{scale:1.5, transition:{duration:0.5}}} 
+        <group
             position={position} 
-            rotation={rotation}>
-            <primitive object={weatherModel} />
-        </motion.mesh>
+            rotation={rotation}
+            >
+            <motion.mesh 
+                ref={ref}
+                onPointerEnter={()=> setHover(true)}
+                onPointerOut={()=> setHover(false)}
+                whileHover={{scale:1.5, transition:{duration:0.5}}} 
+                >
+                <primitive object={weatherModel} />
+            </motion.mesh>
+            {isHover && <CityName name={cityName}/>}
+        </group>
     )
 }
 
