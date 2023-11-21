@@ -38,7 +38,7 @@ const Scene = () => {
         <>
             <Lights/>
             <Earth />
-            <Bounds clip observe margin={0.9}>
+            <Bounds fit clip observe margin={0.7}>
                 <FocusWeather>
                 {content?.map((el, i)=> {
                     const angle = (i / (content.length - 1 )) * Math.PI;

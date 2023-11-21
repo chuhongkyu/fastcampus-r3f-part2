@@ -1,18 +1,15 @@
 import { useBounds } from "@react-three/drei"
 
 export function FocusWeather({ children }) {
-    const api = useBounds()
+    const bounds = useBounds()
     const handleClick = (e) => {
         e.stopPropagation();
-        // console.log(e.delta)
-        if (e.delta <= 2) {
-          api.refresh(e.object).fit();
-        }
-      };
+        bounds.refresh(e.object).fit();
+    };
     return (
       <group 
         onClick={handleClick} 
-        onPointerMissed={(e) => e.button === 0 && api.refresh().fit()}>
+        onPointerMissed={(e) => e.button === 0 && bounds.refresh().fit()}>
         {children}
       </group>
     )
