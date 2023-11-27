@@ -1,13 +1,13 @@
 import { useLoaderData } from "react-router-dom";
 import { Content } from "../components/Content";
 
-const Seoul = () =>{
+const Losangeles = () =>{
     const data = useLoaderData()
 
     return(
         <div className="layout-detail">
             <section className="left">
-                <img src="/images/01.jpg" alt="seoul"/>
+                <img src="/images/05.jpg" alt="Losangeles"/>
             </section>
             <section className="right">
                 <Content data={data.weatherData}/>
@@ -16,4 +16,4 @@ const Seoul = () =>{
     )
 }
 
-export default Seoul;
+export default Losangeles;

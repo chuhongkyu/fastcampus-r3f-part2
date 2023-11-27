@@ -7,14 +7,12 @@ import { cities } from "../utils/cities";
 import { Bounds } from "@react-three/drei";
 import { FocusWeather } from "./FocusWeather";
 
-const API = process.env.REACT_APP_API_KEY;
-
 const Scene = () => {
     const [content, setContent] = useState(null);
 
     const getCitiesWeather = () => {
         const promises = cities?.map((city) => {
-          return getCityWeather(city, API);
+          return getCityWeather(city);
         });
       
         Promise.all(promises)
@@ -38,7 +36,7 @@ const Scene = () => {
         <>
             <Lights/>
             <Earth />
-            <Bounds fit clip observe margin={0.7}>
+            <Bounds clip observe margin={0.7}>
                 <FocusWeather>
                 {content?.map((el, i)=> {
                     const angle = (i / (content.length - 1 )) * Math.PI;
