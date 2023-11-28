@@ -1,5 +1,5 @@
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useMemo, useRef, useState, useEffect } from "react";
+import { useMemo, useRef, useState } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { motion } from "framer-motion-3d";
 import { CityName } from "./CityName";
@@ -21,17 +21,13 @@ const Weather = (props) => {
     })
     
     const navigate =  useNavigate()
-    const [path, setPath] = useState('');
 
-    useEffect(()=> {
-        if (cityName) {
-            const formattedName = cityName.replace(/\s/g, '').toLowerCase();
-            setPath(formattedName);
-        }
-    },[cityName])
+    const formatCityName = (name) => {
+        return name.replace(/\s/g, '').toLowerCase();
+    };
 
     const onClick = () => {
-        navigate(`/${path}`)
+        navigate(`/${formatCityName(cityName)}`)
     }
 
     return(
