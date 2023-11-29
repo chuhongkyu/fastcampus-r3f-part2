@@ -2,9 +2,12 @@ import { Canvas } from "@react-three/fiber";
 import Scene from "../components/Scene";
 import React, { Suspense } from "react";
 import { Loader, OrbitControls } from "@react-three/drei";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import AnimatedOutlet from "../components/AnimatedOutlet";
 
 function Home() {
+  const location = useLocation()
   return (
     <>
     <Canvas camera={{position: [0, 0, 5], fov: 45}}>
@@ -22,7 +25,9 @@ function Home() {
             minDistance={2}/>
     </Canvas>
     <Loader />
-    <Outlet/>
+    <AnimatePresence>
+      <AnimatedOutlet key={location.pathname}/>
+    </AnimatePresence>
     </>
   );
 }
