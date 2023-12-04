@@ -4,8 +4,9 @@ import Weather from "./Weather";
 import Lights from "./Lights";
 import { getCityWeather } from "../utils/weatherApi";
 import { cities } from "../utils/cities";
-import { Bounds } from "@react-three/drei";
+import { Bounds, Stars } from "@react-three/drei";
 import { FocusWeather } from "./FocusWeather";
+import Clouds from "./Clouds";
 
 const Scene = () => {
     const [content, setContent] = useState(null);
@@ -36,6 +37,16 @@ const Scene = () => {
         <>
             <Lights/>
             <Earth />
+            <Clouds/>
+            <Stars 
+                radius={50} 
+                depth={50} 
+                count={1000} 
+                factor={4}
+                saturation={0}
+                fade
+                speed={1}
+                 />
             <Bounds clip observe margin={0.7}>
                 <FocusWeather>
                 {content?.map((el, i)=> {
